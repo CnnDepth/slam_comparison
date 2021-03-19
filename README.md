@@ -16,7 +16,7 @@ This code implements the metrics for vSLAM map (pointcloud) quality estimation a
 TBA
 ```
 
-2. Clone the package into your catkin warkspace and make the package
+2. Clone the package into your catkin workspace and make the package
 
 ```bash
 roscd && cd src
