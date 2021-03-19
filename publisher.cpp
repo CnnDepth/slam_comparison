@@ -16,11 +16,11 @@ int main(int argc, char* argv[]) {
     ros::init (argc, argv, "pub_pcl");
     ros::NodeHandle nh;
     ros::Publisher pub = nh.advertise<PointCloud> (pcd_topic, 1);
-    std::ifstream input_points("/home/kirill/habitat-api/points.txt");
-    std::ifstream input_rgbs("/home/kirill/habitat-api/rgbs.txt");
+    std::ifstream input_points(argv[2]);
+    std::ifstream input_rgbs(argv[3]);
 
     PointCloud::Ptr msg (new PointCloud);
-    msg->header.frame_id = "points";
+    msg->header.frame_id = "map";
     msg->height = 1;
     double x, y, z;
     int r_, g_, b_;
@@ -39,7 +39,8 @@ int main(int argc, char* argv[]) {
     msg->width = msg->points.size();
     std::cout << "Cloud contains " << msg->points.size() << " points" << std::endl;
     std::cout << "First point coords: " << msg->points[0].x << ' ' << msg->points[0].y << ' ' << msg->points[0].z << std::endl;
-    std::cout << "First point color: " << msg->points[0].r << ' ' << msg->points[0].g << ' ' << msg->points[0].b << std::endl;
+    for (int i = 0; i < 10; i++)
+        std::cout << "Point color: " << msg->points[i].r << ' ' << msg->points[i].g << ' ' << msg->points[i].b << std::endl;
 
     ros::Rate loop_rate(4);
     while (nh.ok())
