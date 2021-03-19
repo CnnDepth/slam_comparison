@@ -9,8 +9,6 @@
 typedef pcl::PointCloud<pcl::PointXYZRGB> PointCloud;
 
 std::vector<pcl::PointXYZRGB> points;
-std::vector<geometry_msgs::PoseStamped> path;
-std::vector<ros::Time> timestamps;
 
 void pcd_callback(const PointCloud::ConstPtr& msg)
 {
@@ -22,16 +20,6 @@ void pcd_callback(const PointCloud::ConstPtr& msg)
     }
 }
 
-void path_callback(const nav_msgs::Path& msg)
-{
-    path.clear();
-    timestamps.push_back(msg.header.stamp);
-    BOOST_FOREACH (geometry_msgs::PoseStamped pose, msg.poses)
-    {
-        path.push_back(pose);
-    }
-}
-
 int main(int argc, char** argv)
 {
     char* pcd_topic = argv[1];
@@ -40,7 +28,6 @@ int main(int argc, char** argv)
     ros::init(argc, argv, "sub_pcl");
     ros::NodeHandle nh;
     ros::Subscriber sub = nh.subscribe<PointCloud>(pcd_topic, 1, pcd_callback);
-    ros::Subscriber path_subscriber = nh.subscribe(path_topic, 1, path_callback);
     ros::spin();
     // save pointcloud
     std::cout << "Saving pointcloud..." << std::endl;
