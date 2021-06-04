@@ -23,6 +23,10 @@ void pcd_callback(const PointCloud::ConstPtr& msg)
 int main(int argc, char** argv)
 {
     char* pcd_topic = argv[1];
+<<<<<<< HEAD
+=======
+    char* path_topic = "/mapPath";
+>>>>>>> 607468dfaa1cce6b1255b0bb6bfd910f09b888fb
     std::cout << "subscribing to " << pcd_topic << std::endl;
     ros::init(argc, argv, "sub_pcl");
     ros::NodeHandle nh;

@@ -59,7 +59,11 @@ double compute_metric(const std::vector<point3d> &gt_points,
         sum_distance += distance(gt_points[i], slam_points[i]);
         n_points += 1;
     }
+<<<<<<< HEAD
     std::cout << sum_distance << ' ' << n_points << std::endl;
+=======
+    //std::cout << sum_distance << ' ' << n_points << std::endl;
+>>>>>>> 607468dfaa1cce6b1255b0bb6bfd910f09b888fb
     return sum_distance / n_points;
 }
 

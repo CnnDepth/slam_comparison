@@ -18,7 +18,10 @@ int main(int argc, char* argv[]) {
     ros::Publisher pub = nh.advertise<PointCloud> (pcd_topic, 1);
     std::ifstream input_points(argv[2]);
     std::ifstream input_rgbs(argv[3]);
+<<<<<<< HEAD
     double z_ceiling = atof(argv[4]);
+=======
+>>>>>>> 607468dfaa1cce6b1255b0bb6bfd910f09b888fb
 
     PointCloud::Ptr msg (new PointCloud);
     msg->header.frame_id = "map";
